@@ -1,8 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
 const userreg = require('./routes/api/userreg');
+const session = require('express-session');
+const userlog = require('./routes/api/userlog');
 
 const app = express();
 
@@ -22,6 +23,7 @@ mongoose
   .catch(err => console.log(err));
 
 app.use('/registration', userreg)
+app.use('/login',userlog)
 
 const port = process.env.PORT || 5000;
 
