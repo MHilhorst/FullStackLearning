@@ -48,3 +48,39 @@ In Babel (to plain javascript):
     null,
     "Hello World"
     );
+
+
+We use parent classes to summarize tags:
+  <React.Element>
+    <h1> </h1>
+    <div> </div>
+  </React.Element>
+
+State is used to figure out what data a component needs:
+
+  class Counter extends Component {
+    state = {
+      count: 0,
+      address: {
+        name: "streetname",
+        number:10
+      }
+    }
+  };
+
+To render something from the state object in render we use curly braces.
+  <span>{this.state.count}</span>
+
+Can use any kind of java expression within these curly braces.
+
+When we want to render a list in React we cant use any templating such as in Angular.
+We can however do the following to an array:
+  <ul>
+    { this.state.tags.map(tag => <li key={tag}>{ tag }</li>)}
+  </ul>
+
+We pass the map method to the array variable and then use arrow functions to render JSX methods which are converted by Babel to plain javascript. Remember using curly braces within li to actually access the item of the array, otherwise it will just output the string tag between the li tags
+
+Remember dynamic values must be incorperated using curlybraces
+
+If/Else statements need to be done in plain JavaScript
