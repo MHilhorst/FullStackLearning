@@ -1,13 +1,26 @@
-import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import React, { Component } from 'react';
+import Header from './component/Header';
+import Routes from "./Routes";
 
-import Navigation from './components/Navigation';
-import Login from './components/Login'
+class App extends Component {
+  constructor(props) {
+  super(props);
 
-import 'bootstrap/dist/css/bootstrap.css';
+    this.state = {
+      isAuthenticated: false
+    };
+  }
+  userHasAuthenticated = authenticated => {
+  this.setState({ isAuthenticated: authenticated });
+  }
+  render(){
+    return (
+    <React.Fragment>
+      <Header />
+        <Routes />
+    </React.Fragment>
+  );
+  }
+}
 
-export default (
-  <Route path="/" component={App}>
-    <IndexRoute component={MainPage} />
-  </Route>
-);
+export default App;
