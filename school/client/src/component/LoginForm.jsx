@@ -20,14 +20,13 @@ class LoginForm extends Component {
   handleSubmit(event) {
   event.preventDefault();
   const data = new FormData(event.target);
-  console.log(data.get('password'));
     fetch('http://localhost:5000/api/login', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({"username":data.get('username'),"password":data.get('password')})
     }).then(response => response.json().then(data => {
-      console.log(response.status)
       if(response.status === 200){
+        console.log(response);
         history.push('/search');
         this.setState({
           invalid:false
